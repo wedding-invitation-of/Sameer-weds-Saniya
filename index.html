@@ -43,13 +43,16 @@ body{background:var(--cream-l);color:var(--ink);font-family:'Playfair Display',G
 .plaque .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:translateZ(18px)}
 .plaque .in b{font-size:clamp(3rem,15vw,4.4rem);line-height:1;padding:.1em .2em;background:linear-gradient(120deg,#8a6526,#e9cc86 35%,#9b7430 55%,#f3dca0 80%,#8a6526);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 #fff8) drop-shadow(0 -1px 0 #4a360f66)}
 .plaque .in small{font-size:.5rem;color:#8a6b2e;margin-top:.7rem;letter-spacing:.3em}
-.plaque .in em{font-style:normal;color:#9b7a38;font-size:1.1rem}
+.plaque .in em{font-style:normal;color:#d3202f;font-size:1.25rem;text-shadow:0 1px 0 #fff8,0 2px 4px rgba(150,20,30,.35);animation:beat 1.8s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.22)}30%{transform:scale(1)}45%{transform:scale(1.15)}}
+.plaque .in .arw{width:15px;height:15px;margin-top:.5rem;color:#9b7430;animation:bob 1.3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(-3px);opacity:.45}50%{transform:translateY(4px);opacity:1}}
 .plaque::after{content:"";position:absolute;inset:6%;border-radius:40px;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.7) 50%,transparent 65%) -150% 0/250% 100% no-repeat;animation:glint 3.6s infinite;pointer-events:none;mix-blend-mode:soft-light}
 @keyframes glint{60%,100%{background-position:150% 0}}
 
 /* ---------- sections ---------- */
 section{position:relative;padding:12vh 7vw;text-align:center;overflow:hidden}
-.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:30vh;
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:18vh;
   background:radial-gradient(ellipse at 50% 20%,var(--cream-l),var(--cream) 75%)}
 .hero>*{position:relative;z-index:2}
 .hero .swag{position:absolute;top:0;left:0;width:100%;z-index:3;filter:drop-shadow(0 6px 6px rgba(100,70,30,.3))}
@@ -115,26 +118,19 @@ footer .script{font-size:3rem;color:var(--gold-l)}
 <use href="#br" fill="#8c9a72" stroke="#7b8a63"/></pattern>
 <radialGradient id="cr" cx="35%" cy="25%"><stop offset="0" stop-color="#fffaf0"/><stop offset=".6" stop-color="#f1e1c0"/><stop offset="1" stop-color="#d9bf8c"/></radialGradient>
 <pattern id="bal" width="32" height="22" patternUnits="userSpaceOnUse"><rect x="11" width="10" height="22" rx="4" fill="#ecdab2" stroke="#cdb27c"/></pattern>
-<symbol id="garden" viewBox="0 0 400 200">
-<rect y="150" width="400" height="50" fill="#ead7b2"/><rect y="124" width="400" height="8" fill="#e2cfa6"/><rect y="132" width="400" height="22" fill="url(#bal)"/>
-<ellipse cx="200" cy="180" rx="84" ry="19" fill="#d9c49a"/><ellipse cx="200" cy="176" rx="74" ry="14" fill="#9db6bd"/><ellipse cx="200" cy="174" rx="58" ry="9" fill="#bcd3d8"/>
-<rect x="194" y="120" width="12" height="52" fill="#e9d5ab"/><ellipse cx="200" cy="138" rx="28" ry="7" fill="#e2cfa6"/><path d="M200 120Q176 108 164 142M200 120Q224 108 236 142" stroke="#c9dde1" fill="none" stroke-width="2.5"/>
-<g id="top"><path d="M30 16L14 70h32z" fill="#3f5a35"/><path d="M30 40L8 100h44z" fill="#4b6a3d"/><path d="M30 70L2 128h56z" fill="#587a4a"/><path d="M10 128h40l-6 28H16z" fill="#e9d5ab" stroke="#cdb27c"/><circle cx="14" cy="130" r="8" fill="#f6e6e2"/><circle cx="46" cy="131" r="8" fill="#e9aaa4"/><circle cx="30" cy="127" r="7" fill="#fbf1ea"/></g>
-<use href="#top" x="26" y="20"/><use href="#top" x="304" y="20"/>
-<g><circle cx="108" cy="168" r="9" fill="#f6e6e2"/><circle cx="124" cy="174" r="7" fill="#e9aaa4"/><circle cx="292" cy="170" r="9" fill="#f6e6e2"/><circle cx="276" cy="176" r="7" fill="#e9aaa4"/><circle cx="60" cy="182" r="8" fill="#e9aaa4"/><circle cx="342" cy="184" r="8" fill="#f6e6e2"/></g>
-</symbol></defs></svg>
+<symbol id="garden" viewBox="0 100 400 100"><rect y="150" width="400" height="50" fill="#ead7b2"/><rect y="124" width="400" height="8" fill="#e2cfa6"/><rect y="132" width="400" height="22" fill="url(#bal)"/></symbol></defs></svg>
 
 <audio id="bgm" src="music.mp3" loop preload="auto"></audio>
 <button class="music" id="music" aria-label="Music on/off">♪</button>
 
 <div id="intro">
   <div class="drape l"></div><div class="drape r"></div>
-  <svg class="garden" viewBox="0 0 400 200"><use href="#garden"/></svg>
+  <svg class="garden" viewBox="0 0 400 100"><use href="#garden"/></svg>
   <div class="door l"><svg><rect width="100%" height="100%" fill="url(#leaf)"/></svg></div>
   <div class="door r"><svg><rect width="100%" height="100%" fill="url(#leaf)"/></svg></div>
   <button class="seal" id="seal" aria-label="Tap to open"><div class="plaque">
     <svg viewBox="0 0 220 280"><rect x="16" y="16" width="188" height="248" rx="48" fill="url(#cr)" stroke="#f0dcaa" stroke-width="13" stroke-dasharray="0 11" stroke-linecap="round"/><rect x="22" y="22" width="176" height="236" rx="44" fill="url(#cr)"/><rect x="36" y="36" width="148" height="208" rx="34" fill="none" stroke="#c9a566" stroke-width="1.4"/><rect x="41" y="41" width="138" height="198" rx="30" fill="none" stroke="#c9a56688" stroke-width=".7"/></svg>
-    <div class="in"><em>❦</em><b class="script">S &amp; S</b><small class="cin">Tap to open</small></div>
+    <div class="in"><em>❦</em><b class="script">S &amp; S</b><small class="cin">Tap to open</small><svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v11M3 8.5l5 5 5-5"/></svg></div>
   </div></button>
 </div>
 
@@ -151,7 +147,7 @@ footer .script{font-size:3rem;color:var(--gold-l)}
   <h1 class="names script" style="margin:.2rem 0">Sameer<span class="amp">&amp;</span>Saniya</h1>
   <p class="lead">request the honour of your presence</p>
   <div class="small cin" style="margin-top:1.4rem">Nikah · 01 Dec &nbsp;✦&nbsp; Walima · 02 Dec</div>
-  <svg class="garden" viewBox="0 0 400 200"><use href="#garden"/></svg>
+  <svg class="garden" viewBox="0 0 400 100"><use href="#garden"/></svg>
 </section>
 
 <section class="dark">
